@@ -30,15 +30,19 @@ void OnTick() {
   nextSend = TimeCurrent() + INTERVAL_NOTICE_MIN * 60;
 
   string msg = StringConcatenate("Equity ", AccountEquity(),
-                                 ". Balance", AccountBalance(),
-                                 ". Profit", AccountProfit(),
+                                 ". Balance ", AccountBalance(),
+                                 ". Profit ", AccountProfit(),
                                  ". Total ", OrdersTotal(),
-                                 "orders. Free margin ", AccountFreeMargin(),
+                                 " orders. Free margin ", AccountFreeMargin(),
                                  ". Margin level ", NormalizeDouble(AccountInfoDouble(ACCOUNT_MARGIN_LEVEL), 2), "%");
 
   SendNotification(msg);
+  Print(msg);
 }
 //+------------------------------------------------------------------+
 
-static datetime nextSend;
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+static datetime nextSend = TimeCurrent();
 //+------------------------------------------------------------------+
